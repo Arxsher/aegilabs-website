@@ -2,11 +2,13 @@
 
 import { useSignIn } from "@clerk/nextjs/legacy";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { GithubIcon, GoogleIcon, getClerkErrorMessage } from "./auth-icons";
 
 export function CustomSignInForm() {
   const { isLoaded, signIn, setActive } = useSignIn();
+  const router = useRouter();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -37,7 +39,7 @@ export function CustomSignInForm() {
       const result = await signIn.create({ identifier, password });
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        window.location.assign("/dashboard");
+        router.push("/dashboard");
         return;
       }
       setError("Sign in needs another verification step. Try using Google/GitHub or Clerk account settings.");

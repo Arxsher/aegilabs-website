@@ -2,11 +2,13 @@
 
 import { useSignUp } from "@clerk/nextjs/legacy";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { GithubIcon, GoogleIcon, getClerkErrorMessage } from "./auth-icons";
 
 export function CustomSignUpForm() {
   const { isLoaded, signUp, setActive } = useSignUp();
+  const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -42,7 +44,7 @@ export function CustomSignUpForm() {
 
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        window.location.assign("/onboarding");
+        router.push("/onboarding");
         return;
       }
 
@@ -66,7 +68,7 @@ export function CustomSignUpForm() {
       const result = await signUp.attemptEmailAddressVerification({ code });
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        window.location.assign("/onboarding");
+        router.push("/onboarding");
         return;
       }
       setError("Verification is not complete yet. Try the code again.");

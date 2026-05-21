@@ -25,7 +25,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         playsInline
         autoPlay
         loop
-        preload="auto"
+        preload="none"
         aria-hidden="true"
       >
         <source src={heroVideoUrl} type="video/mp4" />

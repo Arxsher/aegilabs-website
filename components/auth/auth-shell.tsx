@@ -85,7 +85,7 @@ export function AuthShell({ children, mode }: AuthShellProps) {
         className="absolute inset-0 h-full w-full scale-105 object-cover object-[72%_50%] blur-[8px] saturate-125"
         muted
         playsInline
-        preload="auto"
+        preload="none"
         aria-hidden="true"
       >
         <source src={heroVideoUrl} type="video/mp4" />
@@ -98,7 +98,7 @@ export function AuthShell({ children, mode }: AuthShellProps) {
               className="absolute inset-0 h-full w-full scale-[1.04] object-cover object-[72%_50%] opacity-95 blur-[1.5px] saturate-125"
               muted
               playsInline
-              preload="auto"
+              preload="none"
               aria-hidden="true"
             >
               <source src={heroVideoUrl} type="video/mp4" />
