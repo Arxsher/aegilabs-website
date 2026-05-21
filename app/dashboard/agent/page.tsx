@@ -1,5 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { isClerkConfigured } from "@/lib/env";
+
+export const dynamic = "force-dynamic";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { ChatSandbox } from "./chat-sandbox";
 import Link from "next/link";
