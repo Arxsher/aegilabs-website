@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { UserMenu } from "@/components/dashboard/user-menu";
+import dynamic from "next/dynamic";
 import { Menu, X, Search, Sparkles } from "lucide-react";
+
+const UserMenu = dynamic(() => import("@/components/dashboard/user-menu").then((m) => m.UserMenu), { ssr: false });
 
 const heroVideoUrl = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bg-hero-0BnFGdr81Ifnj3WbBZoNt1KE4D5DMT.mp4";
 
